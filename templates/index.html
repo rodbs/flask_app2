@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="jumbotron">
+            <div class="container">
+			
+                <h1>Welcome to my Yelp's personal page   !!!</h1>
+                {% if top3_recommendations  %}
+			
+					<div>
+					    <h2>Top 3 recommendations at {{ address }}</h2>
+    					<table>
+                        {% for key, value in top3_recommendations.items() %}
+                           <tr>
+                                <th> {{ key }} </th>
+                                <td> {{ value }} </td>
+                           </tr>
+                        {% endfor %}
+                        </table>
+    
+    					<a href="{{ url_for('index') }}">Look up another address</a>
+					</div>
+				{% else %}
+                <form action="/" class="form-inline">
+					<div class="form-group">
+						<input type="text" name="address" placeholder="City, State/Country" class="form-control">
+					</div>
+						<input type="submit" value="Submit" class="btn btn-primary">
+				</form>
+				
+				{% endif %}
+		
+            </div>
+        </div>
+    </body>
+</html>
